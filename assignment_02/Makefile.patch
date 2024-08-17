@@ -1,0 +1,11 @@
+--- /usr/src/linux-6.10.5-noalexan/Makefile	2024-08-17 23:55:22.661303650 +0200
++++ Makefile	2024-08-18 00:21:18.596303650 +0200
+@@ -2,7 +2,7 @@
+ VERSION = 6
+ PATCHLEVEL = 10
+ SUBLEVEL = 5
+-EXTRAVERSION = 
++EXTRAVERSION = -thor_kernel
+ NAME = Baby Opossum Posse
+ 
+ # *DOCUMENTATION*
