@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="input", ENV{ID_INPUT_KEYBOARD}=="1", ENV{ID_BUS}=="usb", RUN+="/sbin/insmod /home/noah/little-penguin-1/assignment_04/hello_world.ko"
