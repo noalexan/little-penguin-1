@@ -1,0 +1,62 @@
+root@noalexan:/home/noah/little-penguin-1/assignment_05# dmesg
+root@noalexan:/home/noah/little-penguin-1/assignment_05# insmod misc_device
+insmod: ERROR: could not load module misc_device: No such file or directory
+root@noalexan:/home/noah/little-penguin-1/assignment_05# insmod misc_device.ko
+root@noalexan:/home/noah/little-penguin-1/assignment_05# dmesg
+[ 2280.981428] misc_device: init
+root@noalexan:/home/noah/little-penguin-1/assignment_05# ls -al /dev/fortytwo 
+crw------- 1 root root 10, 125 Sep  4 00:58 /dev/fortytwo
+root@noalexan:/home/noah/little-penguin-1/assignment_05# echo 'noalexan' > /dev/fortytwo 
+root@noalexan:/home/noah/little-penguin-1/assignment_05# dmesg
+[ 2280.981428] misc_device: init
+[ 2313.833425] misc_device: open called
+[ 2313.833434] misc_device: device number: 10 125
+[ 2313.833440] misc_device: write permission
+[ 2313.833494] misc_device: write called
+[ 2313.833496] You entered 'noalexan
+               rld!
+               ' (length: 9)
+[ 2313.833517] misc_device: close called
+root@noalexan:/home/noah/little-penguin-1/assignment_05# echo 'Hello, World!' > /dev/fortytwo
+bash: echo: write error: Invalid argument
+root@noalexan:/home/noah/little-penguin-1/assignment_05# dmesg
+[ 2280.981428] misc_device: init
+[ 2313.833425] misc_device: open called
+[ 2313.833434] misc_device: device number: 10 125
+[ 2313.833440] misc_device: write permission
+[ 2313.833494] misc_device: write called
+[ 2313.833496] You entered 'noalexan
+               rld!
+               ' (length: 9)
+[ 2313.833517] misc_device: close called
+[ 2352.062717] misc_device: open called
+[ 2352.062730] misc_device: device number: 10 125
+[ 2352.062738] misc_device: write permission
+[ 2352.062798] misc_device: write called
+[ 2352.062803] You entered 'Hello, World!
+               ' (length: 14)
+[ 2352.062809] misc_device: entered value does not match 'noalexan'
+[ 2352.064536] misc_device: close called
+root@noalexan:/home/noah/little-penguin-1/assignment_05# rmmod misc_device
+root@noalexan:/home/noah/little-penguin-1/assignment_05# ls -al /dev/fortytwo
+ls: cannot access '/dev/fortytwo': No such file or directory
+root@noalexan:/home/noah/little-penguin-1/assignment_05# dmesg
+[ 2280.981428] misc_device: init
+[ 2313.833425] misc_device: open called
+[ 2313.833434] misc_device: device number: 10 125
+[ 2313.833440] misc_device: write permission
+[ 2313.833494] misc_device: write called
+[ 2313.833496] You entered 'noalexan
+               rld!
+               ' (length: 9)
+[ 2313.833517] misc_device: close called
+[ 2352.062717] misc_device: open called
+[ 2352.062730] misc_device: device number: 10 125
+[ 2352.062738] misc_device: write permission
+[ 2352.062798] misc_device: write called
+[ 2352.062803] You entered 'Hello, World!
+               ' (length: 14)
+[ 2352.062809] misc_device: entered value does not match 'noalexan'
+[ 2352.064536] misc_device: close called
+[ 2372.248696] misc_device: deregister
+root@noalexan:/home/noah/little-penguin-1/assignment_05#
