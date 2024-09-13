@@ -1,0 +1,15 @@
+root@noalexan:/home/noah/little-penguin-1/assignment_07# insmod debug.ko
+root@noalexan:/home/noah/little-penguin-1/assignment_07# dmesg -c
+[ 7420.961313] debug: Created debugfs directory 'fortytwo'
+[ 7420.961328] debug: Created debugfs file 'id'
+[ 7420.961334] debug: Created debugfs file 'jiffies'
+[ 7420.961339] debug: Created debugfs file 'foo'
+root@noalexan:/home/noah/little-penguin-1/assignment_07# printf 'noalexan' > /sys/kernel/debug/fortytwo/id
+root@noalexan:/home/noah/little-penguin-1/assignment_07# printf 'hello world' > /sys/kernel/debug/fortytwo/id
+bash: printf: write error: Invalid argument
+root@noalexan:/home/noah/little-penguin-1/assignment_07# echo 'hello world' > /sys/kernel/debug/fortytwo/foo
+root@noalexan:/home/noah/little-penguin-1/assignment_07# cat /sys/kernel/debug/fortytwo/foo
+hello world
+root@noalexan:/home/noah/little-penguin-1/assignment_07# cat /sys/kernel/debug/fortytwo/jiffies
+4302181924root@noalexan:/home/noah/little-penguin-1/assignment_07# cat /sys/kernel/debug/fortytwo/id
+noalexanroot@noalexan:/home/noah/little-penguin-1/assignment_07#
