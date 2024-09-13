@@ -8,13 +8,13 @@ MODULE_VERSION("1.0");
 
 static int __init hello_world_init(void)
 {
-    printk(KERN_INFO "Hello, World!\n");
-    return 0;
+	printk(KERN_INFO "Hello, World!\n");
+	return 0;
 }
 
 static void __exit hello_world_exit(void)
 {
-    printk(KERN_INFO "Cleaning up module.\n");
+	printk(KERN_INFO "Cleaning up module.\n");
 }
 
 module_init(hello_world_init);
