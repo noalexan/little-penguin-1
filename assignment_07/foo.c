@@ -1,9 +1,7 @@
 #include "debug.h"
 #include <linux/mutex.h>
 
-#define MAX_SIZE 0x1000
-
-static char data[MAX_SIZE];
+static char data[PAGE_SIZE];
 static ssize_t data_len = 0;
 
 ssize_t foo_write(struct file *file, const char __user *user_buffer, size_t user_len, loff_t *ppos)
@@ -11,7 +9,7 @@ ssize_t foo_write(struct file *file, const char __user *user_buffer, size_t user
 	printk(KERN_INFO "debug: foo: write called\n");
 
 	mutex_lock(&foo_mutex);
-	data_len = simple_write_to_buffer(data, MAX_SIZE, ppos, user_buffer, user_len);
+	data_len = simple_write_to_buffer(data, PAGE_SIZE, ppos, user_buffer, user_len);
 	mutex_unlock(&foo_mutex);
 	return data_len;
 }
