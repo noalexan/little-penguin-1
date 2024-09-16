@@ -17,13 +17,15 @@ struct mutex foo_mutex;
 
 static const struct file_operations foo_fops = {
 	owner: THIS_MODULE,
+	open: foo_open,
+	release: foo_release,
 	read: foo_read,
 	write: foo_write,
 };
 
 static int __init my_init(void)
 {
-	mutex_init(&foo_mutex);
+	mutex_init(&foo_mutex);mutex_init(&foo_mutex);
 
 	debug_dir = debugfs_create_dir("fortytwo", NULL);
 	if (IS_ERR(debug_dir)) {
